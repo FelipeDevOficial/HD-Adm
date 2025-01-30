@@ -9,7 +9,7 @@ package com.br.adm.model;
  *
  * @author dacru
  */
-public class curso {
+public class Curso {
     
     private int id_curso;
     private String nome;

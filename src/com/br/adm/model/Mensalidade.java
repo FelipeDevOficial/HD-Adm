@@ -9,7 +9,7 @@ package com.br.adm.model;
  *
  * @author dacru
  */
-public class mensalidade {
+public class Mensalidade {
     
     private int id_mensalidade;
     private int id_matricula;

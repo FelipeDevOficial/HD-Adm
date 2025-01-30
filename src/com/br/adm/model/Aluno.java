@@ -11,7 +11,7 @@ import javafx.animation.Animation;
  *
  * @author dacru
  */
-public class aluno {
+public class Aluno {
     
     public enum Status {
         ATIVO,

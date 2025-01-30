@@ -9,11 +9,11 @@ package com.br.adm.model;
  *
  * @author dacru
  */
-public class usuario {
+public class Usuario {
     
     private int id_usuario;
     private String nome;
-    private int cpf;
+    private String cpf;
     private String celular;
     private String telefone;
     private String rua;
@@ -21,7 +21,8 @@ public class usuario {
     private String bairro;
     private String cep;
     private String email;
-    private String senha;    
+    private String senha;
+    private String cd_nivelAcesso;
 
     public int getId_usuario() {
         return id_usuario;
@@ -39,11 +40,11 @@ public class usuario {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -110,7 +111,20 @@ public class usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
+    public String getCd_nivelAcesso() {
+        return cd_nivelAcesso;
+    }
+
+    public void setCd_nivelAcesso(String cd_nivelAcesso) {
+        this.cd_nivelAcesso = cd_nivelAcesso;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id_usuario=" + id_usuario + ", nome=" + nome + ", cpf=" + cpf + ", celular=" + celular + ", telefone=" + telefone + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", email=" + email + ", senha=" + senha + ", cd_nivelAcesso=" + cd_nivelAcesso + '}';
+    }
+
+  
     
 }
