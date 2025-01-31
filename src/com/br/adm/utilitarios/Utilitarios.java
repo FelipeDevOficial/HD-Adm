@@ -14,7 +14,7 @@ import static jdk.nashorn.internal.runtime.Debug.id;
  *
  * @author dacru
  */
-public class Utilitarios {
+public class Utilitarios {   
     public void LimpaTela (JPanel container) {
         Component conponentes[] = container.getComponents();
        for(Component component : conponentes) {
@@ -23,5 +23,5 @@ public class Utilitarios {
            }
        } 
     }     
-    
+         
 }

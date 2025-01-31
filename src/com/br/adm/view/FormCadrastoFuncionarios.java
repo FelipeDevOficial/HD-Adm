@@ -8,6 +8,7 @@ package com.br.adm.view;
 import com.br.adm.dao.UsuarioDAO;
 import com.br.adm.model.Usuario;
 import com.br.adm.utilitarios.Utilitarios;
+import com.sun.xml.internal.ws.wsdl.parser.InaccessibleWSDLException;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -17,12 +18,12 @@ import javax.swing.JTextField;
  *
  * @author dacru
  */
-public class FormularioFuncionarios extends javax.swing.JFrame {
+public class FormCadrastoFuncionarios extends javax.swing.JFrame {
 
     /**
      * Creates new form FormularioFuncionários
      */
-    public FormularioFuncionarios() {
+    public FormCadrastoFuncionarios() {
         initComponents();
     }
 
@@ -50,7 +51,6 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         txtCep = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtID = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -63,6 +63,9 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         cb_nivel_acesso = new javax.swing.JComboBox<>();
         btnEditar = new javax.swing.JButton();
+        txtID = new javax.swing.JLabel();
+        btnExcluir = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
         txtImgTela = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,16 +76,16 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulário de Usuários");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1090, 60));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 80));
 
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 150, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 200, -1));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 150, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 200, -1));
 
         txtNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 120, -1));
+        getContentPane().add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 230, 170, -1));
 
         txtRua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtRua.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +93,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
                 txtRuaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 180, 120, -1));
+        getContentPane().add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 180, 170, -1));
 
         txtBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtBairro.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +101,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
                 txtBairroActionPerformed(evt);
             }
         });
-        getContentPane().add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 290, 120, -1));
+        getContentPane().add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 290, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,7 +121,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
                 txtCpfKeyReleased(evt);
             }
         });
-        getContentPane().add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 150, -1));
+        getContentPane().add(txtCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,7 +150,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, 120, -1));
+        getContentPane().add(txtCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,10 +161,6 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("ID:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
-
-        txtID.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        txtID.setForeground(new java.awt.Color(240, 240, 240));
-        getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 50, -1));
 
         txtSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, -1));
@@ -222,15 +221,38 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
         cb_nivel_acesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USUARIO", "ADMINISTRADOR" }));
-        getContentPane().add(cb_nivel_acesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 160, -1));
+        getContentPane().add(cb_nivel_acesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 150, -1));
 
         btnEditar.setContentAreaFilled(false);
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
         getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 560, 150, 50));
+
+        txtID.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        txtID.setForeground(new java.awt.Color(240, 240, 240));
+        getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, 20));
+
+        btnExcluir.setContentAreaFilled(false);
+        btnExcluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(959, 565, 160, 50));
+
+        btnListar.setContentAreaFilled(false);
+        btnListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 565, 150, 50));
 
         txtImgTela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/adm/imagens/telas/TelaFormularioCadrasto.png"))); // NOI18N
         getContentPane().add(txtImgTela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 670));
@@ -326,6 +348,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
+    try{
         if (!txtNome.getText().trim().isEmpty() &&
         !txtCpf.getText().trim().isEmpty() &&
         !txtCelular.getText().trim().isEmpty() &&
@@ -338,6 +361,7 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         !txtSenha.getText().trim().isEmpty()) {
             
         Usuario obj = new Usuario();
+        obj.setId_usuario(Integer.parseInt(txtID.getText()));
         obj.setNome(txtNome.getText());
         obj.setCpf(txtCpf.getText());
         obj.setCelular(txtCelular.getText());
@@ -349,11 +373,38 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         obj.setEmail(txtEmail.getText());
         obj.setSenha(txtSenha.getText());
         obj.setCd_nivelAcesso(cb_nivel_acesso.getSelectedItem().toString());
-        UsuarioDAO dao = new UsuarioDAO();
-        dao.Editar(obj);
+        
+        UsuarioDAO u = new UsuarioDAO();
+        u.Editar(obj);
+        
+        
+        //Após salvar os dados no banco de dados, o método do btão salvar limpa os campos do painel.
+        ArrayList<Object> variaveis = new ArrayList<>();
+        variaveis.add(txtID);
+        variaveis.add(txtNome);
+        variaveis.add(txtCpf);
+        variaveis.add(txtCelular);
+        variaveis.add(txtTelefone);
+        variaveis.add(txtRua);
+        variaveis.add(txtNumero);
+        variaveis.add(txtBairro);
+        variaveis.add(txtCep);
+        variaveis.add(txtEmail);
+        variaveis.add(txtSenha);
+         // Percorrendo e limpando todos os campos
+        for (Object o : variaveis) {
+        if (o instanceof JTextField) { // Verifica se é um JTextField
+            ((JTextField) o).setText(""); // Define um espaço em branco
+        }
+        }
+        
+        
         }else{
              JOptionPane.showMessageDialog(null, "Atenção! Preencha todos os campos.");
        }
+    }catch (Exception e) {
+        JOptionPane.showMessageDialog(null,"Olha aí, o erro foi esse:  " + e);
+    }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void txtCpfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCpfKeyReleased
@@ -397,6 +448,41 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCpfKeyPressed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        Usuario objeto = new Usuario();
+        UsuarioDAO dao = new UsuarioDAO();
+        objeto.setId_usuario(Integer.parseInt(txtID.getText()));
+        dao.Excluir(objeto);
+        
+        //Após salvar os dados no banco de dados, o método do btão salvar limpa os campos do painel.
+        ArrayList<Object> variaveis = new ArrayList<>();
+        variaveis.add(txtID);
+        variaveis.add(txtNome);
+        variaveis.add(txtCpf);
+        variaveis.add(txtCelular);
+        variaveis.add(txtTelefone);
+        variaveis.add(txtRua);
+        variaveis.add(txtNumero);
+        variaveis.add(txtBairro);
+        variaveis.add(txtCep);
+        variaveis.add(txtEmail);
+        variaveis.add(txtSenha);
+         // Percorrendo e limpando todos os campos
+        for (Object o : variaveis) {
+        if (o instanceof JTextField) { // Verifica se é um JTextField
+            ((JTextField) o).setText(""); // Define um espaço em branco
+        }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+        FormListFuncionarios f = new FormListFuncionarios();
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnListarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,30 +500,34 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormularioFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadrastoFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormularioFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadrastoFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormularioFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadrastoFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormularioFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCadrastoFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormularioFuncionarios().setVisible(true);
+                new FormCadrastoFuncionarios().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cb_nivel_acesso;
+    public javax.swing.JComboBox<String> cb_nivel_acesso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -451,17 +541,17 @@ public class FormularioFuncionarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtBairro;
-    private javax.swing.JFormattedTextField txtCelular;
-    private javax.swing.JFormattedTextField txtCep;
-    private javax.swing.JFormattedTextField txtCpf;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JLabel txtID;
+    public javax.swing.JTextField txtBairro;
+    public javax.swing.JFormattedTextField txtCelular;
+    public javax.swing.JFormattedTextField txtCep;
+    public javax.swing.JFormattedTextField txtCpf;
+    public javax.swing.JTextField txtEmail;
+    public javax.swing.JLabel txtID;
     private javax.swing.JLabel txtImgTela;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNumero;
-    private javax.swing.JTextField txtRua;
-    private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JFormattedTextField txtTelefone;
+    public javax.swing.JTextField txtNome;
+    public javax.swing.JTextField txtNumero;
+    public javax.swing.JTextField txtRua;
+    public javax.swing.JPasswordField txtSenha;
+    public javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

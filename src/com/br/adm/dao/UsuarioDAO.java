@@ -59,33 +59,33 @@ try {
 }
 
 public void Editar (Usuario obj) {
-try {
-    //1º criar o sql
-    String sql = "update usuario set nome=?, cpf=?, celular=?, telefone=?, rua=?, numero=?, bairro=?, cep=?, email=?, senha=?, nivel_acesso=? where id_usuario=?";
+ String sql = "UPDATE usuario SET nome=?, cpf=?, celular=?, telefone=?, rua=?, numero=?, bairro=?, cep=?, email=?, senha=?, nivel_acesso=? WHERE id_usuario=?";
     
-    //2ª preparar a conexcao SQL oara se cinectar com o banco
-    PreparedStatement stmt = conn.prepareStatement(sql);
-    stmt.setString(1, obj.getNome());
-    stmt.setString(2, obj.getCpf());
-    stmt.setString(3, obj.getCelular());
-    stmt.setString(4, obj.getTelefone());
-    stmt.setString(5, obj.getRua());
-    stmt.setString(6, obj.getNumero());
-    stmt.setString(7, obj.getBairro());
-    stmt.setString(8, obj.getCep());
-    stmt.setString(9, obj.getEmail());
-    stmt.setString(10, obj.getSenha());
-    stmt.setString(11, obj.getCd_nivelAcesso());
-    stmt.setInt(12, obj.getId_usuario());
-    
-    //3º executar sql
-    stmt.execute();
-    //4º Fecha conexao
-    stmt.close();    
-    JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
-} catch (Exception erro) {
-    JOptionPane.showMessageDialog(null, "Erro ao editar o Usuário " + erro);
-}
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, obj.getNome());
+        stmt.setString(2, obj.getCpf());
+        stmt.setString(3, obj.getCelular());
+        stmt.setString(4, obj.getTelefone());
+        stmt.setString(5, obj.getRua());
+        stmt.setString(6, obj.getNumero());
+        stmt.setString(7, obj.getBairro());
+        stmt.setString(8, obj.getCep());
+        stmt.setString(9, obj.getEmail());
+        stmt.setString(10, obj.getSenha());
+        stmt.setString(11, obj.getCd_nivelAcesso());
+        stmt.setInt(12, obj.getId_usuario());
+
+        int rowsAffected = stmt.executeUpdate();
+        
+        if (rowsAffected > 0) {
+          JOptionPane.showMessageDialog(null,"Usuário atualizado com sucesso! ID: " + obj.getId_usuario());
+        } else {
+          JOptionPane.showMessageDialog(null, "Nenhum usuário foi atualizado. Verifique se o ID existe: " + obj.getId_usuario());
+            //return false;
+        }
+    } catch (SQLException erro) {
+        JOptionPane.showMessageDialog(null,"Erro ao editar o Usuário" + erro);
+    }
 
 }
 
@@ -160,7 +160,7 @@ public void Excluir(Usuario obj) {
     return null;
 }    
 
-    public List<Usuario> listar(){
+    public List<Usuario> Listar(){
         List<Usuario> lista = new ArrayList<>();
         try {
             String sql = "select * from usuario";
@@ -172,14 +172,15 @@ public void Excluir(Usuario obj) {
                 obj.setId_usuario(rs.getInt("id_usuario"));
                 obj.setNome(rs.getString("nome"));
                 obj.setCpf(rs.getString("cpf"));
+                obj.setEmail(rs.getString("email"));
+                obj.setCd_nivelAcesso(rs.getString("nivel_acesso"));
+                obj.setSenha(rs.getString("senha"));
                 obj.setCelular(rs.getString("celular"));
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setRua(rs.getString("rua"));
                 obj.setNumero(rs.getString("numero"));
                 obj.setBairro(rs.getString("bairro"));
                 obj.setCep(rs.getString("cep"));
-                obj.setEmail(rs.getString("email"));
-                obj.setSenha(rs.getString("senha"));
                 lista.add(obj);            
                 
             }

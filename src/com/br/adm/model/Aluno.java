@@ -20,7 +20,7 @@ public class Aluno {
     
     private int id_aluno;
     private String nome;
-    private int cpf;
+    private String cpf;
     private String email;
     private String celular;
     private String telefone;
@@ -46,11 +46,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -120,8 +120,10 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "alunos{" + "id_aluno=" + id_aluno + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", celular=" + celular + ", telefone=" + telefone + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", status=" + status + '}';
+        return "Aluno{" + "id_aluno=" + id_aluno + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", celular=" + celular + ", telefone=" + telefone + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", status=" + status + '}';
     }
+
+    
     
     
 }
