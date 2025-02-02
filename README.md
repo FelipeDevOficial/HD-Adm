@@ -8,13 +8,8 @@
 
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Funcionalidades](#funcionalidades)
-- [Demonstração da Aplicação](#demonstração-da-aplicação)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Instalação](#instalação)
-- [Como Usar](#como-usar)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Contato](#contato)
+- [Estrutura](#estrutura).
 
 ## Descrição do Projeto
 
@@ -28,24 +23,11 @@ O **HD-informatica** é um sistema desenvolvido em Java para a gestão de alunos
 - **Emissão de Certificados**: Geração de certificados de conclusão de curso em formato HTML, com opção de impressão e salvamento em PDF.
 - **Gerenciamento de Cursos**: Adição, edição, exclusão e consulta de cursos disponíveis.
 
-## Demonstração da Aplicação
-
-![Demonstração da Aplicação](link-para-gif-ou-imagem.gif)
-
 ## Tecnologias Utilizadas
 
 - **Linguagem**: Java
 - **Gerenciamento de Dependências**: Apache Maven
 - **Banco de Dados**: MySQL
-- **Frameworks**: Spring Boot
-
-## Instalação
-
-1. **Clone o repositório**:
-
-   ```bash
-   git clone https://github.com/FelipeDevOficial/HD-informatica.git
-   cd HD-informatica
 
 ## Estrutura
 
