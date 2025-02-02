@@ -1,6 +1,6 @@
 # HD-informatica
 
-![Logo do Projeto](https://github.com/FelipeDevOficial/HD-informatica/blob/main/logo-HD_Informatica.jpg)
+![Logo do Projeto](https://github.com/FelipeDevOficial/HD-informatica/blob/main/logo-HD_Informatica.png)
 
 > :construction: Projeto em construção :construction:
 
