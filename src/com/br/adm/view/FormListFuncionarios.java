@@ -7,8 +7,16 @@ package com.br.adm.view;
 
 import com.br.adm.dao.UsuarioDAO;
 import com.br.adm.model.Usuario;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JViewport;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -90,9 +98,10 @@ public class FormListFuncionarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
+        superior = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,33 +114,6 @@ public class FormListFuncionarios extends javax.swing.JFrame {
         jLabel3.setText("Lista de Usuários");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 80));
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Nome", "CPF", "E-mail", "Nivel", "Senha", "Celular", "Telefone", "Rua", "Nº", "Bairro", "CEP"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabela.setAutoscrolls(false);
-        tabela.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tabela);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 1200, 220));
-
         btnVoltar.setContentAreaFilled(false);
         btnVoltar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +121,98 @@ public class FormListFuncionarios extends javax.swing.JFrame {
                 btnVoltarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 590, 150, 60));
+        getContentPane().add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 600, 150, 60));
+
+        superior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/adm/imagens/telas/listCopy.png"))); // NOI18N
+        getContentPane().add(superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 556, 1200, 120));
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "CPF", "E-mail", "Nível de Acesso", "Senha", "Celular", "Telefone", "Rua", "Número", "Bairro", "CEP"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabela.setAutoscrolls(false);
+        tabela.setCellSelectionEnabled(true);
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
+        tabela.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (tabela.getColumnModel().getColumnCount() > 0) {
+            tabela.getColumnModel().getColumn(0).setResizable(false);
+            tabela.getColumnModel().getColumn(1).setResizable(false);
+            tabela.getColumnModel().getColumn(2).setResizable(false);
+            tabela.getColumnModel().getColumn(3).setResizable(false);
+            tabela.getColumnModel().getColumn(4).setResizable(false);
+            tabela.getColumnModel().getColumn(5).setResizable(false);
+            tabela.getColumnModel().getColumn(6).setResizable(false);
+            tabela.getColumnModel().getColumn(7).setResizable(false);
+            tabela.getColumnModel().getColumn(8).setResizable(false);
+            tabela.getColumnModel().getColumn(9).setResizable(false);
+            tabela.getColumnModel().getColumn(10).setResizable(false);
+            tabela.getColumnModel().getColumn(11).setResizable(false);
+        }
+        // Tornando a tabela transparente
+        tabela.setOpaque(false);
+        tabela.setShowGrid(false);
+        tabela.setBackground(new Color(0, 0, 0, 0)); // Fundo da tabela transparente
+        ((DefaultTableCellRenderer) tabela.getTableHeader().getDefaultRenderer()).setOpaque(false);
+
+        // Criando um renderizador para personalizar o fundo da célula
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+                JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                if (value != null && !value.toString().trim().isEmpty()) {
+                    // Se a célula contém dados, aplica fundo cinza claro [240, 240, 240]
+                    label.setOpaque(true);
+                    label.setBackground(new Color(240, 240, 240));
+                } else {
+                    // Se a célula estiver vazia, deixa o fundo transparente
+                    label.setOpaque(false);
+                }
+
+                return label;
+            }
+        };
+
+        // Aplicando o renderizador personalizado às colunas
+        for (int i = 0; i < tabela.getColumnCount(); i++) {
+            tabela.getColumnModel().getColumn(i).setCellRenderer(renderer);
+        }
+
+        // Ajustando a transparência no JScrollPane se a tabela estiver dentro de um
+        if (tabela.getParent() instanceof JViewport) {
+            JViewport viewport = (JViewport) tabela.getParent();
+            viewport.setOpaque(false);
+            if (viewport.getParent() instanceof JScrollPane) {
+                JScrollPane scrollPane = (JScrollPane) viewport.getParent();
+                scrollPane.setOpaque(false);
+                scrollPane.getViewport().setOpaque(false);
+                scrollPane.setBorder(null);
+            }
+        }
+
+        // Configurações extras para evitar linhas visíveis nas células vazias
+        tabela.setFillsViewportHeight(true);
+        tabela.setIntercellSpacing(new Dimension(0, 0));
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 221, 1200, 340));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/br/adm/imagens/telas/list.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -148,10 +221,20 @@ public class FormListFuncionarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        new FormCadrastoFuncionarios().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         // TODO add your handling code here:
-        FormCadrastoFuncionarios f = new FormCadrastoFuncionarios();        
+        FormCadrastoFuncionarios f = new FormCadrastoFuncionarios();
+        //Verifica se a posição possui conteudo.
+        int linhaSelecionada = tabela.getSelectedRow();
+        if (linhaSelecionada >= 0) {
         f.setVisible(true);
+        this.setVisible(false);
         f.txtID.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         f.txtNome.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
         f.txtCpf.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
@@ -164,14 +247,8 @@ public class FormListFuncionarios extends javax.swing.JFrame {
         f.txtNumero.setText(tabela.getValueAt(tabela.getSelectedRow(), 9).toString());
         f.txtBairro.setText(tabela.getValueAt(tabela.getSelectedRow(), 10).toString());
         f.txtCep.setText(tabela.getValueAt(tabela.getSelectedRow(), 11).toString());
-        this.setVisible(false);        
+        }
     }//GEN-LAST:event_tabelaMouseClicked
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
-        new FormCadrastoFuncionarios().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +290,7 @@ public class FormListFuncionarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel superior;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }
