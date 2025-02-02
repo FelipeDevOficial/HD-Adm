@@ -9,7 +9,7 @@
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Estrutura](#estrutura).
+- [Estrutura](#estrutura)
 
 ## Descrição do Projeto
 
