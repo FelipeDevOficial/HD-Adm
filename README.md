@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://github.com/FelipeDevOficial/HD-informatica/blob/main/logo-HD_Informatica.png" alt="Logo do Projeto" width="200" height="200">
 </p>
-> :construction: Projeto em construção :construction:
+ :construction: Projeto em construção :construction:
 
 ## Índice
 
