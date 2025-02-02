@@ -1,7 +1,7 @@
 # HD-informatica
-
+<section style="height: 20%; wigth: 20%;"><
 ![Logo do Projeto](https://github.com/FelipeDevOficial/HD-informatica/blob/main/logo-HD_Informatica.png)
-
+</section>
 > :construction: Projeto em construção :construction:
 
 ## Índice
